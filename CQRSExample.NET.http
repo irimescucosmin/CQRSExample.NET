@@ -1,6 +1,0 @@
-@CQRSExample.NET_HostAddress = http://localhost:5034
-
-GET {{CQRSExample.NET_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
