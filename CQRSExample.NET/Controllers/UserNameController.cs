@@ -13,13 +13,13 @@ public class UserNameController(ISender sender) : ControllerBase
     {
         return Ok(await sender.Send(new GetUserNameQuery()));
     }
-    
+
     [HttpPost]
-    public async Task<IActionResult> Add(string username)
+    public async Task<IActionResult> Add(string userName)
     {
         return Ok(await sender.Send(new AddUserNameCommand
         {
-            UserName = username
+            UserName = userName
         }));
     }
 }

@@ -1,4 +1,6 @@
-using System.Reflection;
+using CQRSExample.NET.Behaviors;
+using FluentValidation;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+
+// Register FluentValidation Service
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+// Register the validation behavior
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 
 var app = builder.Build();
 
